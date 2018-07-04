@@ -1,5 +1,44 @@
 'use strict';
 
+function getElementAndNum(str){
+  var element=str.substr(0,1);
+  var num=parseInt(str.substr(2,1));
+  var item={key:element,count:num};
+  return item;
+}
 function countSameElements(collection) {
-  return '实现练习要求，并改写该行代码。';
+  //存放结果的集合
+  var elements=new Array();
+  //记录第一个与当前字符不同的字符的位置，作为下一个比较的字符
+  var diffIndex=collection.length;
+  //是否已存在与当前字符不同的字符，默认为false,即默认所有字符都一样
+  var diff=false;
+  //按顺序取一个字符与其后续额的所有字符进行比较
+  for (var i = 0; i < collection.length; i++) {
+    //创建对象存储一个字符的出现次数
+    var obj={key:"",count:1};
+    if(collection[i].length===1){
+      obj.key=collection[i];
+      for (var j = i+1; j < collection.length; j++) {
+        if (obj.key!=collection[j]) {
+          //当第一次出现于当前字符不同的字符时，修改diff，并记录不同字符的位置
+          if (!diff) {
+            diff=true;
+            diffIndex=j;
+          }
+        }else {
+          obj.count++;
+        }
+      }
+    }else {
+      obj=getElementAndNum(collection[i]);
+    }
+
+    i=diffIndex-1;
+    elements.push(obj);
+    //重置diffIndex和diff
+    diffIndex=collection.length;
+    diff=false;
+  }
+  return elements;
 }
