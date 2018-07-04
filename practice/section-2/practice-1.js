@@ -1,22 +1,6 @@
 'use strict';
 
 function countSameElements(collection) {
-  //var arr=['w','w3','w','h','h'];
-  //alert(arr.sort());
-  /*
-  var elements=new Array();
-  collection=collection.sort();
-  for (var i = 0; i < collection.length; i++) {
-    var obj={key:"",count:1};
-    obj.key=collection[i];
-    while (obj.key==collection[i+1]) {
-      obj.count++;
-      i++;
-    }
-    elements.push(obj);
-  }
-  return elements;
-  */
   //存放结果的集合
   var elements=new Array();
   //记录第一个与当前字符不同的字符的位置，作为下一个比较的字符
@@ -43,7 +27,7 @@ function countSameElements(collection) {
     elements.push(obj);
     //重置diffIndex和diff
     diffIndex=collection.length;
-    diff=true;
+    diff=false;
   }
   return elements;
 }

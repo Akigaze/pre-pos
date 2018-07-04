@@ -1,5 +1,13 @@
 'use strict';
 
 function createUpdatedCollection(collectionA, objectB) {
-  return '实现练习要求，并改写该行代码。';
+  for (var ele of objectB.value) {
+    for (var obj of collectionA) {
+      if (ele===obj.key) {
+        obj.count--;
+        break;
+      }
+    }
+  }
+  return collectionA;
 }
